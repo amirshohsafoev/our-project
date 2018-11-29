@@ -1,0 +1,10 @@
+<h1>Authors!</h1><br>
+
+<%= link_to "New Author", new_author_path  %>
+<br>
+<br>
+<ul style="list-style-type:disc">
+<% @authors.each do |a| %>
+<li><%= link_to a.name, a %> (b. <%= a.birth_year %>)</li>
+<% end %>
+</ul>

@@ -1,0 +1,15 @@
+<h1> <%= @book.title %> (<%=@book.pages %> pages) </h1>
+<h2>Authors:</h2>
+<ul>
+  <% @book.author_books.each do |author_book|%>
+  <li><%= link_to author_book.author.name, author_book.author %> (b. <%= author_book.author.birth_year %>)</li>
+  <%= button_to "Remove author", author_book, :method => :delete %>
+  <% end %>
+
+  <%= form_for @author_book do |f|%>
+  <%= f.label :author_id %>
+  <%= f.collection_select :author_id, @authors, :id, :name %>
+  <%= f.hidden_field :book_id, :value => @book.id %>
+  <%= f.submit %>
+  <% end %>
+</ul>
